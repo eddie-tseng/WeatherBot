@@ -30,18 +30,16 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def pretty_echo(event):
-    if event.source.user_id != "U5be388a08b5ea3293c62ab9643176fcf":
+    # Phoebe 愛唱歌
+    pretty_text = ''
 
-        # Phoebe 愛唱歌
-        pretty_text = ''
+    for i in event.message.text:
+        pretty_text += i
 
-        for i in event.message.text:
-            pretty_text += i
-
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=pretty_text)
-        )
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=pretty_text)
+    )
 
 
 @app.route("/", methods=['GET'])
